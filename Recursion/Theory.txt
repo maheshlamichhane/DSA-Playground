@@ -1,0 +1,126 @@
+Recursion:->
+-> a way of solving problem by having a function calling itself.
+-> Performing the same operation multiple times with different inputs.
+-> In every step we try smaller inputs to make the problem smaller.
+-> Base condition is needed to stop the recursion,otherwise infinite loop will occur.
+
+Example:
+static void openRussianDoll(int doll){
+if(doll == 1){
+System.out.println("All dolls are opened");
+}
+else{
+openRussianDoll(doll-1);
+}
+}
+
+Why we need Recursion?
+-> recursive thinking is really important in programming and it helps you
+break down big problems into smaller ones and easier to use.
+	when to choose recusion?
+		* if you can divide the problem into simillar sub problems.
+		* Design an algorithm to compute nth..
+		* Write code to list n
+		* Implement a method to compute all.
+		* Practise
+-> The prominient usage of recursion in data structure like trees and graphs.
+-> Interviews
+-> It is used in many algorithms(divide and conquer,greedy and dynamic programming)
+
+The Logic Behind Recursion:
+i. A method call it self
+ii. Exit from infinite loop
+
+static String recursionMethod(String[] parameters){
+if(exit from condition satisfied){
+return some value;
+}
+else{
+recursionMethod(modified parameters);
+}
+}
+
+
+static void firstMethod(){
+secondMethod();
+System.out.println("I am the first Method");
+}
+
+static void secondMethod(){
+thirdMethod();
+System.out.println("I am the second Method");
+}
+
+static void thirdMethod(){
+fourthMethod();
+System.out.println("I am the third Method");
+}
+
+static fourthMethod(){
+System.out.println("I am the fourth Method");
+}
+
+
+Stack Order:->
+fourthMethod();
+thirdMethod();
+secondMethod();
+firstMethod();
+
+
+Recursion VS Iteration:->
+
+Points							Recursion		Iteration	Description
+Space efficient? 				No				Yes			No stack memory require in case of iteration.
+Time efficient? 				No				Yes			In case of recursion system needs more time for pop
+															and push elements to stack memory which makes recursion
+															less time efficient.
+Easy to code? 					Yes				No 			We use recursion especially in cases we know that a
+															problem can be divided into similar sub problems.
+
+
+
+When to use/avoid Recursion:->
+
+When to use it?
+-> When we can easily breakdown a problem into smaller subproblem.
+-> When we are fine with extra overhead(both time and space) that comes with it.
+-> When we need a quick working solutions instead of efficient code.
+-> When traverse a tree.
+-> When we use memoization in recursion.
+
+When avoid it?
+-> if time and space complexity matters for us.
+-> Recursion uses more memory. if we use embedded memory.For example an application that
+takes more memory in the phone is not efficient.
+-> Recursion can be slow.
+
+Note:-> In Recursion operation is performed in multiple call stack while in iteration operation is performed in single
+call stack.
+
+
+Write Recursion in 3 steps:->
+Step1: Recursive case - the flow
+n! = n*(n-1)*(n-2)*(n-3)*....*2*1;
+Step2:Base case - the stopping criterion
+0! = 1
+1! = 1
+
+
+
+Step3:-> Unintentional case - the constraint
+-factorial(-1) ??
+-factorial(-2) ??
+
+-0! = -1
+-1! = -1;
+-2!=-1;
+
+Factorial of 4 = 4*factorial(3)
+factorial(3) = 3*factorial(2)
+factorial(2) = 2*factorial(1);
+factorial(1) = 1;
+then
+factorial(2) = 2 *1 = 2;
+factorial(3) = 3*factoril(2) = 3*2 = 6;
+factorial(4) = 4*factorial(3) = 4*6 = 24

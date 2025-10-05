@@ -1,0 +1,34 @@
+What is a Data Structure?
+-> Data Structures are different ways of organizing data on your computer, that can be used
+effectively.
+
+What is an Algorithm?
+-> Set of instructions to perform a Task.
+-> Correctness and Efficiency makes a good algorithm.
+
+
+Types of Data Structure
+i. Primitive
+    a. Integer
+    b. Float
+    c. Character
+    d. Boolean
+ii. Non Primitive
+    a. Linear
+        1. Static
+            I. Array
+        2. Dynamic
+            I.Linked List
+            II. Stack
+            III. Queue
+    b. Non Linear
+        1. Tree
+        2. Graph
+
+Types of Algorithms
+i. Simple recursive algorithms
+ii. Divide and conquer algorithms
+iii. Dynamic programming algorithms
+iv. Greedy algorithms
+v. Brute force algorithms
+vi. Randomized algorithms
