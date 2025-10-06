@@ -1,0 +1,796 @@
+What is a Linked List?
+-> Linked List is a form of a sequential collection and it does not have
+to be in order.
+-> A linked list is made up of independent nodes that may contain any
+type of data and each node has a reference to the next node in the link.
+-> The different parts of the train can be considered as linked list.
+-> First component will be head and last component will be tail.
+-> each and every node has two seperate component data and link which
+points to the another node.
+-> last component must points to the null because we don't need to traverse
+the list before inserting data to the linked list because tail manage this.
+
+Linked List VS Array:->
+-> Elements of linked list are independent objects that's why we can
+easily delete node from the linked list but not in array.
+-> Variable size: the size of a linked list is not predefined but in array
+size of the array is defined already.
+-> Random access: accessing an element is very efficient in arrays but in
+l inked list to access an element we need to traverse through the list.
+
+Types of Linked List:->
+i. Singly Linked List
+ii. Circular Singly Linked List
+iii. Doubley Linked List
+iv. Circular Doubley Linked List
+
+Linked List In Memory:->
+-> In arrays element are stored contigiously in memory it increase the
+accessibility of the element but in linked list elements are  not stored in
+contigious memory location that's why accessiblity of the element is not
+possible without traversing.
+-> Linked list need extra memory to store the pointer which points to the
+next element.
+
+Creation Of Singly Linked List:->
+i. Create Head and Tail, initialize with null
+ii. Create a blank Node and assign a value to it and reference to null.
+iii. Link Head and Tail with this node.
+
+public Node createSinglyLinkedList(int nodeValue) {
+		head = new Node();
+		Node node = new Node();
+		node.next = null;
+		node.value = nodeValue;
+		head = node;
+		tail = node;
+		size = 1;
+		return head;
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+Insertion In Singly Linked List:->
+i. At the beginning of the linked list.
+ii. After a node in the middle of linked list
+iii. At the end of the linked list.
+
+public void insertInLinkedList(int nodeValue,int location) {
+		Node node = new Node();
+		node.value = nodeValue;
+		if(head == null) {
+			createSinglyLinkedList(nodeValue);
+			return;
+		}
+		else if(location == 0) {
+			node.next = head;
+			head = node;
+		}
+		else if(location >= size) {
+			node.next = null;
+			tail.next = node;
+			tail = node;
+		}
+		else {
+			Node tempNode = head;
+			int index = 0;
+			while(index < location - 1) {
+				tempNode = tempNode.next;
+				index++;
+			}
+			Node nextNode = tempNode.next;
+			tempNode.next = node;
+			node.next = nextNode;
+		}
+		size++;
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Traversal of Singly Linked List:->
+public void traverseSinglyLinkedList(){
+	if(head == null){
+		System.out.println("SLL does not exists!");
+	}
+	else{
+		Node tempNode = head;
+		for(int i=0; i<size;i++){
+			System.out.prin(tempNode.value);
+			if(i != size-1){
+				System.out.print(" -> ");
+			}
+			tempNode = tempNode.next;
+		}
+	}
+	System.out.println("\n");
+}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Searching in Singly Linked List:->
+boolean searchNode(int nodeValue) {
+	if(head != null) {
+		Node tempNode = head;
+		for(int i=0; i<size; i++) {
+			if(tempNode.value == nodeValue) {
+				System.out.println("Found the node at location: "+i+"\n");
+				return true;
+			}
+			tempNode = tempNode.next;
+		}
+	}
+	System.out.print("Node not found! ");
+	return false;
+}
+}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Deletion in Singly Linked List:->
+i. Deleting the first node
+ii. Deleting any given node
+iii. Deleting the last node
+
+// delete a node in singly linked list
+	public void deletionOfNode(int location) {
+		if (head == null) {
+			System.out.println("The SLL does not exits");
+			return;
+		} else if (location == 0) {
+			head = head.next;
+			size--;
+			if (size == 0) {
+				tail = null;
+			}
+		} else if (location >= size) {
+			Node tempNode = head;
+			for (int i = 0; i < size - 1; i++) {
+				tempNode = tempNode.next;
+			}
+			if (tempNode == head) {
+				tail = head = null;
+				size--;
+				return;
+			}
+			tempNode.next = null;
+			tail = tempNode;
+			size--;
+		} else {
+			Node tempNode = head;
+			for(int i = 0; i<location-1;i++) {
+				tempNode = tempNode.next;
+			}
+			tempNode.next = tempNode.next.next;
+			size--;
+		}
+	}
+
+Time complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+//Delete Entire Singly Linked List
+public void deleteSLL() {
+	head = null;
+	tail = null;
+	System.out.println("The SLL deleted successfully");
+}
+
+Time Complexity: O(1)
+Space Complexity: O(1)
+-------------------------------------------------------------------------------------
+
+Circular Linked List:->
+-> In this list last node points to the first node in the node list.
+
+Create Circular Linked List:->
+
+	public Node createCircularLinkedList(int nodeValue) {
+		head = new Node();
+		Node node = new Node();
+		node.value = nodeValue;
+		node.next = node;
+		head = node;
+		tail = node;
+		size = 1;
+		return head;
+
+	}
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+Insertion In Circular Linked List:->
+//Insertion In Linked List
+	public void insertCircularSinglyLinkedList(int nodeValue,int location) {
+
+		Node node = new Node();
+		node.value = nodeValue;
+		if(head == null) {
+			createCircularLinkedList(nodeValue);
+			return;
+		}
+		else if(location == 0) {
+			node.next = head;
+			head = node;
+			tail.next = head;
+		}
+		else if(location  >= size) {
+			tail.next = node;
+			tail = node;
+			node.next = head;
+		}
+		else {
+			Node tempNode = head;
+			int index=0;
+			while(index < location -1) {
+				tempNode = tempNode.next;
+				index++;
+			}
+			node.next = tempNode.next;
+			tempNode.next = node;
+		}
+		size++;
+	}
+
+
+Time Complexity: O(N)
+Space Complexity: O(1)
+
+
+Traversing in Circular Singly Linked List:->
+// Traverse Circular Singly Linked List
+	public void traverseCircularSinglyLinkedList() {
+		if (head != null) {
+			Node tempNode = head;
+			for (int i = 0; i < size; i++) {
+				System.out.print(tempNode.value);
+				if (i != size - 1) {
+					System.out.print(" -> ");
+				}
+				tempNode = tempNode.next;
+			}
+		} else {
+			System.out.println("Circular Linked List Does Not Exists");
+		}
+	}
+
+Time Complexity: O(N)
+Space Complexity: O(1)
+
+Searching Node in Singly Circular Linked List:->
+//Search node in Circular Singly Linked List
+	public boolean searchNode(int nodeValue) {
+
+		if(head != null) {
+			Node tempNode = head;
+			for(int i=0; i<size;i++) {
+				if(tempNode.value == nodeValue) {
+					System.out.println("Found node at location: "+i);
+					return true;
+				}
+				tempNode = tempNode.next;
+			}
+		}
+		System.out.println("Node not found");
+		return false;
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Deletion in Circular Singly Linked List:->
+//Delete node from circular linked list
+	public void deleteNode(int location) {
+		if(head == null) {
+			System.out.println("The CSLL does not exists!");
+			return;
+		}
+		else if(location == 0) {
+			head = head.next;
+			tail.next = head;
+			size--;
+			if(size==0) {
+				tail = null;
+				head.next = null;
+				head = null;
+			}
+		}
+		else if(location >= size) {
+			Node tempNode = head;
+			for(int i=0; i<size-1;i++) {
+				tempNode = tempNode.next;
+			}
+			if(tempNode == head) {
+				head.next = null;
+				tail = head = null;
+				size--;
+				return;
+			}
+			tempNode.next = head;
+			tail = tempNode;
+			size--;
+		}
+		else {
+			Node tempNode = head;
+			for(int i=0; i<location-1; i++) {
+				tempNode = tempNode.next;
+			}
+			tempNode.next = tempNode.next.next;
+			size--;
+		}
+	}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(N)
+
+Deleting Entire Singly Circular Linked List:->
+	//Delete Entire Circular Singly Linked List
+	public void deleteCSLL() {
+		if(head == null) {
+			System.out.println("The CSLL does not exists!");
+		}
+		else {
+			head = null;
+			tail.next = null;
+			tail = null;
+			System.out.println("The CSLL has been deleted!");
+		}
+	}
+
+Time Complexity: O(1)
+Space Complexity: O(1)
+
+
+------------------------------------------------------------------------------------
+
+Doubly Linked List:->
+-> In case of double link list every node has a pointer to point it's previous element
+as well.
+-> We can traverse the link list from the back as well with the doubly linked list.
+
+
+Create a Doubly Linked List:->
+public DoublyNode createDoublyLinkedList(int nodeValue) {
+		head = new DoublyNode();
+		DoublyNode newNode = new DoublyNode();
+		newNode.value = nodeValue;
+		newNode.next = null;
+		newNode.prev = null;
+		head = newNode;
+		tail = newNode;
+		size=1;
+		return head;
+}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+Insertion In Doubly Linked List:->
+i. Insertion at the beginning of linked list
+ii. Insert at the specified location of linked list
+iii. Insert at the end of the linked list
+
+
+	//Insertion in Doubly Linked List
+	public void insertDLL(int nodeValue,int location) {
+		DoublyNode newNode = new DoublyNode();
+		newNode.value = nodeValue;
+		if(head == null) {
+			createDoublyLinkedList(nodeValue);
+			return;
+		}
+		else if(location == 0) {
+			newNode.next = head;
+			newNode.prev = null;
+			head.prev = newNode;
+			head = newNode;
+		}
+		else if(location >=size) {
+			newNode.next = null;
+			tail.next = newNode;
+			newNode.prev = tail;
+			tail = newNode;
+		}
+		else {
+			DoublyNode tempNode = head;
+			int index=0;
+			while(index <location-1) {
+				tempNode = tempNode.next;
+				index++;
+			}
+			newNode.prev = tempNode;
+			newNode.next = tempNode.next;
+			tempNode.next = newNode;
+			newNode.next.prev = newNode;
+		}
+		size++;
+}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Traversing in Doubly Linked List:->
+//Traversing the doubly linked list from the beginning
+	public void traverseDLL() {
+		if(head != null) {
+			DoublyNode tempNode = head;
+			for(int i=0; i<size;i++) {
+				System.out.print(tempNode.value);
+				if(i != size-1) {
+					System.out.print(" -> ");
+				}
+				tempNode = tempNode.next;
+			}
+		}
+		else {
+			System.out.println("Doubly Linked List does not exists!");
+		}
+		System.out.println("\n");
+}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Traversing in reverse in Doubly Linked List:->
+//Traversing the doubly linked list from the end
+	public void traverseInReverseDLL() {
+		if(tail != null) {
+			DoublyNode tempNode = tail;
+			for(int i=0; i<size; i++) {
+				System.out.print(tempNode.value);
+				if(i != size-1) {
+					System.out.print(" -> ");
+				}
+				tempNode = tempNode.prev;
+			}
+		}
+		else {
+			System.out.println("Doubly Linked List does not exists!");
+		}
+		System.out.println("\n");
+	}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Search Node in Doubly Linked List:->
+//Serach node in doubly linked list
+	public boolean searchInDLL(int nodeValue) {
+		if(head !=null) {
+			DoublyNode tempNode = head;
+			for(int i=0; i<size;i++) {
+				if(tempNode.value == nodeValue) {
+					System.out.println("Element found at index="+i);
+					return true;
+				}
+				tempNode=tempNode.next;
+			}
+		}
+		System.out.println("Element not found");
+		return false;
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Deletion in Doubly Linked List:->
+i. Deleting first element
+ii. Deleting any element
+iii. Deleting last element
+
+
+	//Deleting a node from doubly linked list
+	public void deleteNodeDLL(int location) {
+		if(head == null) {
+			System.out.println("The DLL does not exists!");
+			return;
+		}
+		else if(location == 0) {
+			if(size == 1) {
+				head = tail = null;
+				size--;
+				return;
+			}
+			else {
+				head = head.next;
+				head.prev = null;
+				size--;
+			}
+		} else if(location >=size) {
+			DoublyNode tempNode = tail.prev;
+			if(size == 1) {
+				head = tail = null;
+				size--;
+				return;
+			}
+			else {
+				tempNode.next = null;
+				tail = tempNode;
+				size--;
+			}
+		} else {
+			DoublyNode tempNode = head;
+			for(int i=0; i<location-1; i++) {
+				tempNode = tempNode.next;
+			}
+			tempNode.next = tempNode.next.next;
+			tempNode.next.prev = tempNode;
+			size--;
+		}
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Deleting Entire Doubly Linked List:->
+//Deleting entire doubly linked list
+	public void deleteDLL() {
+		DoublyNode tempNode = head;
+		for(int i=0; i<size;i++) {
+			tempNode.prev = null;
+			tempNode = tempNode.next;
+		}
+		head = null;
+		tail = null;
+		System.out.println("The DLL has been deleted!");
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+------------------------------------------------------------------------------------
+
+Circular Doubly Linked List:->
+-> Using circular doubly linked list we can traverse the linked list from the both direction.
+//create doubly circular linked list
+	public DoublyNode createDoublyCircularLinkedList(int nodeValue) {
+		head = new DoublyNode();
+		DoublyNode newNode = new DoublyNode();
+		newNode.value = nodeValue;
+		head = newNode;
+		tail=newNode;
+		newNode.next = newNode;
+		newNode.prev = newNode;
+		size=1;
+		return head;
+}
+
+Time Complexity = O(1)
+Space Complexity = O(1)
+
+
+Insertion In Circular Doubly Linked List:->
+// insertion in doubly circular linked list
+	void insertNode(int nodeValue, int location) {
+		DoublyNode newNode = new DoublyNode();
+		newNode.value = nodeValue;
+		if (head == null) {
+			createDoublyCircularLinkedList(nodeValue);
+			return;
+		} else if (location == 0) {
+			newNode.next = head;
+			newNode.prev = tail;
+			head.prev = newNode;
+			tail.next = newNode;
+			head = newNode;
+		} else if (location >= size) {
+			newNode.next = head;
+			newNode.prev = tail;
+			head.prev = newNode;
+			tail.next = newNode;
+			tail = newNode;
+		} else {
+			DoublyNode tempNode = head;
+			int index = 0;
+			while (index < location - 1) {
+				tempNode = tempNode.next;
+				index++;
+			}
+			newNode.prev = tempNode;
+			newNode.next = tempNode.next;
+			tempNode.next = newNode;
+			newNode.next.prev = newNode;
+		}
+		size++;
+	}
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Traversing Circular Doubly Linked List From the Head:->
+	//Traversing the circular doubly linked list from the beginning
+	public void traverseCDLL() {
+		if(head != null) {
+			DoublyNode tempNode = head;
+			for(int i=0; i<size;i++) {
+				System.out.print(tempNode.value);
+				if(i != size-1) {
+					System.out.print(" -> ");
+				}
+				tempNode = tempNode.next;
+			}
+		}
+		else {
+			System.out.println("Doubly Linked List does not exists!");
+		}
+		System.out.println("\n");
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Traversing Circular Doubly Linked List From The Tail:->
+//Traversing the circular doubly linked list from the end
+		public void traverseInReverseCDLL() {
+			if(tail != null) {
+				DoublyNode tempNode = tail;
+				for(int i=0; i<size; i++) {
+					System.out.print(tempNode.value);
+					if(i != size-1) {
+						System.out.print(" -> ");
+					}
+					tempNode = tempNode.prev;
+				}
+			}
+			else {
+				System.out.println("Doubly Linked List does not exists!");
+			}
+			System.out.println("\n");
+}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+
+
+Searching a node from circular doubly linked list:->
+	//Serach node in doubly linked list
+		public boolean searchInDLL(int nodeValue) {
+			if(head !=null) {
+				DoublyNode tempNode = head;
+				for(int i=0; i<size;i++) {
+					if(tempNode.value == nodeValue) {
+						System.out.println("Element found at index="+i);
+						return true;
+					}
+					tempNode=tempNode.next;
+				}
+			}
+			System.out.println("Element not found");
+			return false;
+		}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Deletion In Circular Doubly Linked List:->
+	//Delete node in circular linked list
+		public void deleteNode(int location) {
+			if(head == null) {
+				System.out.println("The CDLL does not exist!");
+				return;
+			}
+			else if(location == 0) {
+				if(size == 1) {
+					head.prev = null;
+					head.next = null;
+					head = tail = null;
+					size--;
+					return;
+				}
+				else {
+					head = head.next;
+					head.prev = tail;
+					tail.next = head;
+					size--;
+				}
+			}
+			else if(location >= size) {
+				if(size == 1) {
+					head.prev = null;
+					head.next = null;
+					head = tail = null;
+					size--;
+					return;
+				}
+				else {
+					tail = tail.prev;
+					tail.next = head;
+					head.prev = tail;
+					size--;
+				}
+			}
+			else {
+				DoublyNode tempNode = head;
+				for(int i=0; i< location -1; i++) {
+					tempNode = tempNode.next;
+				}
+				tempNode.next = tempNode.next.next;
+				tempNode.next.prev = tempNode;
+				size--;
+			}
+}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Deleting Circular Doubly Linked List:->
+//Deleting the entire circular doubly linked list
+	public void deleteCDLL() {
+		DoublyNode tempNode = head;
+		for(int i=0; i<size; i++) {
+			tempNode.prev = null;
+			tempNode = tempNode.next;
+		}
+		head = null;
+		tail = null;
+		System.out.println("The CDLL has been deleted!");
+}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+
+Note:->
+-> The Time complexity of the array is less while linklist is more.
+-> The Space complexity of the array is high while linklist is less.
+
+
+Deleting the duplicate from singly linked list:->
+public void deleteDups(LinkedList ll) {
+		HashSet<Integer> hs = new HashSet<Integer>();
+		Node current = ll.head;
+		Node prev = null;
+		while(current != null) {
+			int curval = current.value;
+			if(hs.contains(curval)) {
+				prev.next = current.next;
+				ll.size--;
+			}
+			else {
+				hs.add(curval);
+				prev = current;
+			}
+			current = current.next;
+		}
+	}
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(N)
+
+Searching from the last position in link list:->
+Node nthToLast(LinkedList ll,int n) {
+		Node p1 = ll.head;
+		Node p2 = ll.head;
+		for(int i=0; i<n; i++) {
+			if(p2 == null) return null;
+			p2 = p2.next;
+		}
+		while(p2 != null) {
+			p1 = p1.next;
+			p2 = p2.next;
+		}
+		return p1;
+	}
+
+
+Time Complexity:-> O(N)
+Space Complexity:-> O(N)
