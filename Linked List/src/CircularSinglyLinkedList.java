@@ -12,6 +12,8 @@ public class CircularSinglyLinkedList {
         tail = node;
         size = 1;
         return head;
+
+        // Time Complexity O(1),Space Complexity O(1)
     }
 
     public void traverse(){
@@ -28,6 +30,8 @@ public class CircularSinglyLinkedList {
                 tempNode = tempNode.next;
             }
         }
+
+        // Time Complexity O(N), Space Complexity O(1)
     }
 
     public void insert(int nodeValue,int location){
@@ -57,6 +61,8 @@ public class CircularSinglyLinkedList {
             tempNode.next = node;
         }
         size++;
+
+        // Time Complexity O(n),Space Complexity O(1)
     }
 
     public boolean search(int nodeValue){
@@ -76,6 +82,8 @@ public class CircularSinglyLinkedList {
 
         }
         return false;
+
+        // Time Complexity O(n),Space Complexity O(1)
     }
 
     public void delete(int location){
@@ -115,6 +123,8 @@ public class CircularSinglyLinkedList {
 
             }
         }
+
+        // Time Complexity O(n),Space Complexity O(1)
     }
 
     public void deleteCircularSLL(){
@@ -127,5 +137,7 @@ public class CircularSinglyLinkedList {
             tail = null;
             System.out.println("Circular SLL Deleted");
         }
+
+        // Time Complexity O(1), Space complexity O(1)
     }
 }
