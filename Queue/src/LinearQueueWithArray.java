@@ -1,4 +1,4 @@
-public class QueueWithArray {
+public class LinearQueueWithArray {
 
     public int[] array;
     int beginningOfQueue;

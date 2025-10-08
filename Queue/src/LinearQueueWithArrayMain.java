@@ -1,8 +1,8 @@
 
-public class QueueWithArrayMain {
+public class LinearQueueWithArrayMain {
     public static void main(String[] args) {
 
-        QueueWithArray queue = new QueueWithArray();
+        LinearQueueWithArray queue = new LinearQueueWithArray();
         queue.create(3);
         queue.Enqueue(3);
         queue.Enqueue(4);
