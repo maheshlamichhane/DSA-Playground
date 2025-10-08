@@ -1,0 +1,244 @@
+What is a Stack?
+-> Stack is a data structure that stores items in a Last_In/First-Out manner.
+-> For example pile of plate,book are example of stack.
+-> Browser back button is the also example of stack data structures.
+
+Stack Operation:->
+i. Create Stack
+ii. Push
+iii. Pop
+iv. Peek
+v. isEmpty
+vi. isFull
+vii. deleteStack
+
+
+Stack Creation - Array VS Linked List:->
+
+Stack using Array:->
+-> Easy to implement
+-> Fixed size
+
+Stack using Linked List:->
+-> Variable size
+-> Implementation is not easy
+
+
+Stack Operation Using Array:->
+
+
+Creating Stack:->
+public Stack(int size) {
+		this.arr = new int[size];
+		topOfStack = -1;
+		System.out.println("The Stack is created with size of: "+size);
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(N)
+
+Checking is stack Empty:->
+public boolean isEmpty() {
+		if(topOfStack == -1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(N)
+
+
+
+Checking is Stack Full:->
+//Checking is stack is full
+	public boolean isFull() {
+		if(topOfStack == arr.length-1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+Adding Element To Stack:->
+//Adding element in stack
+	public void push(int value) {
+		if(isFull()) {
+			System.out.println("The Stack is Full!");
+		}
+		else {
+			arr[topOfStack+1] = value;
+			topOfStack++;
+			System.out.println("The Element is Added to Stack");
+
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+
+Deleting Element From Stack:->
+//Deleting an Element From Stack
+	public int pop() {
+		if(isEmpty()) {
+			System.out.println("The Stack is empty");
+			return -1;
+		}
+		else {
+			int topStack = arr[topOfStack];
+			topOfStack--;
+			return topStack;
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+
+Peeking an Element From the Stack:->
+//Peeking an Element From Stack
+	public int peek() {
+		if(isEmpty()) {
+			System.out.println("The stack is empty!");
+			return -1;
+		}
+		else {
+			int value = arr[topOfStack];
+			return value;
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+
+Deleting The Entire Stack:->
+	//Deleting Entire Stack
+	public void deleteStack() {
+		arr = null;
+		System.out.println("Stack deleted Successfully");
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+
+-------------------------------------------------------------------------------------------
+
+Implementing Stack Using The Linked List:->
+
+//Create a Stack
+	public Node createStack(int nodeValue) {
+		head = new Node();
+		Node node = new Node();
+		node.next = null;
+		node.value = nodeValue;
+		head = node;
+		tail = node;
+		size = 1;
+		return head;
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(N)
+
+//Add a node in Stack
+	public void push(int nodeValue) {
+		Node node = new Node();
+		node.value = nodeValue;
+		if (head == null) {
+			createStack(nodeValue);
+			return;
+		}
+		node.next = head;
+		head = node;
+		size++;
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+
+// Serach for a node in Stack
+	int peek(int nodeValue) {
+		if (head != null) {
+			Node tempNode = head;
+			return tempNode.value;
+//			for (int i = 0; i < size; i++) {
+//				if (tempNode.value == nodeValue) {
+//					System.out.println("Found the node at location: " + i + "\n");
+//					return true;
+//				}
+//				tempNode = tempNode.next;
+//			}
+		}
+		System.out.print("Node not found! ");
+		return -1;
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+// delete a node in Stack
+	public void pop() {
+		if (isEmpty()) {
+			System.out.println("The Stack does not exits");
+			return;
+		}
+			head = head.next;
+			size--;
+			if (size == 0) {
+				tail = null;
+			}
+
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+// Delete Entire Stack
+	public void deleteStack() {
+		head = null;
+		System.out.println("The Stack deleted successfully");
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+//Check Stack is empty or not
+	public boolean isEmpty() {
+		if(head == null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+Time Complexity:-> O(1)
+Space Complexity:-> O(1)
+
+
+----------------------------------------------------------------------------------------
+
+When to use Stack:->
+-> LIFO Functionality
+-> The chance of data corruption is minimum.
+
+
+
+When to avoid stack:->
+-> Random access is not possible.
