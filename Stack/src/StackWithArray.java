@@ -6,6 +6,8 @@ public class StackWithArray {
     public void create(int size){
         array = new int[size];
         topOfStack = -1;
+
+        // Time Complexity O(1),Space Complexity O(n)
     }
 
     public boolean isFull(){
@@ -15,6 +17,8 @@ public class StackWithArray {
         else{
             return false;
         }
+
+        // Time Complexity O(1), Space Complexity O(1)
     }
 
     public boolean isEmpty(){
@@ -24,6 +28,8 @@ public class StackWithArray {
         else{
             return false;
         }
+
+        // Time Complexity O(1), Space Complexity O(1)
     }
 
     public void push(int value){
@@ -33,6 +39,8 @@ public class StackWithArray {
         else{
             array[++topOfStack] = value;
         }
+
+        // Time Complexity O(1), Space Complexity O(1)
     }
 
     public void pop(){
@@ -42,6 +50,8 @@ public class StackWithArray {
         else{
             --topOfStack;
         }
+        // Time Complexity O(1), Space Complexity O(1)
+
     }
 
 
@@ -53,12 +63,16 @@ public class StackWithArray {
         else{
             return array[topOfStack];
         }
+
+        // Time Complexity O(1), Space Complexity O(1)
     }
 
 
     public void deleteStack(){
         array = null;
         topOfStack = -1;
+
+        // Time Complexity O(1), Space Complexity O(1)
     }
 
 }
