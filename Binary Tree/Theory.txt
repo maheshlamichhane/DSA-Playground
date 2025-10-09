@@ -1,0 +1,331 @@
+What is a Tree:->
+-> A tree is a nonlinear data structure with hierarchical relationship between
+its elements without having any cycle, it is basically reversed from a real
+life tree.
+
+Properties:
+-> Represent hierarchical data
+-> Each node has two components: data and a link to its sub category
+-> Base category and sub category under it.
+
+Why Tree?
+-> Quicker and Easier access to the data
+-> Store hierarchical data, like folder structure,organization structure,XML/
+HTML data.
+-> File system in computer is example of tree data structures.
+-> There are many different types of data structures which performs better in
+various situations.
+-> Binary Search Tree,AVL,Red Black Tree,Trie
+
+
+Tree Terminology:->
+Root: top node without parent
+Edge: a link between parent and child
+Leaf: a node which does not have children
+Sibling: children of same parent
+Ancestor: parent,grandparent,great grandparent of a node.
+Depth of node: a length of the path from root to node
+Height of node: a length of the path from the node to the deepest node
+Depth of tree: depth of root node
+Height of tree: height of root node
+
+Creating a Basic Tree In Java:->
+
+TreeNode:->
+package com.lamichhane.tree.basictreee;
+
+import java.util.ArrayList;
+
+public class TreeNode {
+
+	String data;
+	ArrayList<TreeNode> children;
+
+	public TreeNode(String data) {
+		this.data = data;
+		this.children = new ArrayList<TreeNode>();
+	}
+
+		this.children.add(node);
+	}
+
+	public String print(int level) {
+		String ret;
+		ret = " ".repeat(level)+data+"\n";
+		for(TreeNode node : this.children) {
+			ret += node.print(level+1);
+		}
+		return ret;
+	}
+
+
+
+}
+
+
+Main:->
+package com.lamichhane.tree.basictreee;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		TreeNode drinks = new TreeNode("Drinks");
+		TreeNode hot = new TreeNode("Hot");
+		TreeNode cold = new TreeNode("Cold");
+		TreeNode tea = new TreeNode("Tea");
+		TreeNode coffee = new TreeNode("Coffee");
+		TreeNode wine = new TreeNode("Wine");
+		TreeNode beer = new TreeNode("Beer");
+		drinks.addChild(hot);
+		drinks.addChild(cold);
+		hot.addChild(tea);
+		hot.addChild(coffee);
+		cold.addChild(wine);
+		cold.addChild(beer);
+		System.out.println(drinks.print(0));
+
+	}
+
+}
+-----------------------------------------------------------------------------
+
+Binary Tree:->
+-> Binary trees are the data structures in which each node has at most two
+children,oftern referred to as the left and right children.
+-> Binary tree is a family of data structures(BST,Heap tree,AVL,red black trees,Syntax tree)
+
+
+Why Binary Tree ?
+-> Binary trees are a prerequisite for mode advanced trees like BST,AVL,Red
+Black Trees.
+-> Huffman coding problem,heap priority problem and expression parsing
+problems can be solved effeciently using binary trees,
+
+Types of Binary Tree:->
+
+i> Full Binary Tree
+-> In this case each node of binary tree has zero or two children but not
+one.
+
+ii. Perfect Binary Tree
+-> In perfect binary tree all non leaf node has two children and they are
+at the same depth.
+
+iii. Complete Binary Tree
+-> all levels are completely filled except the last level.
+
+iv. Balanced Binary Tree
+-> each leaf is not more than certain distance from the root node than any
+other leaf.
+
+
+Binary Tree Representation using the Linked List:->
+
+
+Binary Tree - Traversal
+Depth first search
+-> Preorder traversal
+-> Inorder traversal
+-> Post order traversal
+Breadth first search
+-> level order traversal
+
+PreOrder Traversl:-> Root Node -> Left sub tree -> right sub tree
+
+//PreOrder Traversal  tc n/2 sc  n/2 ---> O(N) for both
+	void preOrder(BinaryNode node) {
+		if(node == null) {
+			return;
+		}
+		System.out.print(node.value+" ");
+		preOrder(node.left);
+		preOrder(node.right);
+	}
+
+N1 -> N2 -> N4 -> N8 -> N9 -> N5 -> N3 -> N6 -> N7
+
+
+
+PostOrder Traversal:-> Left Subtree -> rightSubTree -> Root Node
+
+//Post Order Traversal  O(N) for both
+	void postOrder(BinaryNode node) {
+		if(node == null) {
+			return;
+		}
+		postOrder(node.left);
+		postOrder(node.right);
+		System.out.print(node.value+" ");
+	}
+
+N8 -> N9 -> N4 -> N5 -> N2 -> N6 -> N7 -> N3 -> N1
+
+InOrder Traveral:-> leftSubTree -> root -> right sub tree
+//InOrder Traversal O(N) for both
+	void inOrder(BinaryNode node) {
+		if(node == null) {
+			return;
+		}
+		inOrder(node.left);
+		System.out.print(node.value+" ");
+		inOrder(node.right);
+	}
+
+N8 -> N4 -> N9 -> N2 -> N5 -> N1 -> N6 -> N3 -> N7
+
+LevelOrder Traversal:-> first level -> second level
+//Level Order O(N) for both
+	void levelOrder() {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			System.out.print(presentNode.value+" ");
+			if(presentNode.left != null) {
+				queue.add(presentNode.left);
+			}
+			if(presentNode.right != null) {
+				queue.add(presentNode.right);
+			}
+		}
+
+	}
+
+
+Search In Binary Tree:->
+	//Search Method with level order tc O(N) sc O(N)
+	public void search(String value) {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.value == value) {
+				System.out.println("The value-"+value+" is found in Tree");
+				return;
+			}
+			else {
+				if(presentNode.left != null) {
+					queue.add(presentNode.left);
+				}
+				if(presentNode.right != null) {
+					queue.add(presentNode.right);
+				}
+			}
+		}
+
+		System.out.println("The value-"+value+" is not found in Tree");
+
+	}
+
+
+
+
+Insert In Binary Tree:->
+-> A root node is null
+-> The tree exists and we have to look for a first vacant place
+
+
+//Inserting in binary tree tc:O(N),sc:O(N)
+	public void insert(String value) {
+		BinaryNode newNode = new BinaryNode();
+		newNode.value = value;
+		if(root == null) {
+			root = newNode;
+			System.out.println("Inserted new node at Root");
+			return;
+		}
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.left == null) {
+				presentNode.left = newNode;
+				System.out.println("Successfully Inserted");
+				break;
+			}
+			else if(presentNode.right == null) {
+				presentNode.right = newNode;
+				System.out.println("Successfully Inserted");
+				break;
+			}
+			else {
+				queue.add(presentNode.left);
+				queue.add(presentNode.right);
+			}
+		}
+	}
+
+	//Delete in Binary Tree
+
+	//Get Deepest node
+	public BinaryNode getDeepestNode() {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		BinaryNode presentNode = null;
+		while(!queue.isEmpty()) {
+			presentNode = queue.remove();
+			if(presentNode.left != null) {
+				queue.add(presentNode.left);
+			}
+			if(presentNode.right != null) {
+				queue.add(presentNode.right);
+			}
+		}
+		return presentNode;
+	}
+
+	//Delete Deepest Node
+	public void deleteDeepestNode() {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		BinaryNode previousNode,presentNode = null;
+		while(!queue.isEmpty()) {
+			previousNode = presentNode;
+			presentNode = queue.remove();
+			if(presentNode.left == null) {
+				previousNode.right = null;
+				return;
+			}
+			else if(presentNode.right == null) {
+				presentNode.left = null;
+				return;
+			}
+				queue.add(presentNode.left);
+				queue.add(presentNode.right);
+		}
+	}
+
+	//Delete Given Node tc:O(N),sc:O(N)
+	public void deleteNode(String value) {
+		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+		queue.add(root);
+		while(!queue.isEmpty()) {
+			BinaryNode presentNode = queue.remove();
+			if(presentNode.value == value) {
+				presentNode.value = getDeepestNode().value;
+				deleteDeepestNode();
+				System.out.println("The node is deleted!");
+				return;
+			}
+			else {
+				if(presentNode.left != null) {
+					queue.add(presentNode.left);
+				}
+				if(presentNode.right != null) {
+					queue.add(presentNode.right);
+				}
+			}
+
+		}
+
+		System.out.println("The node does not exists in the binary tree");
+	}
+
+
+Deleting Entire binary tree:->
+//Delete Entire binay tree tc O(1),sc O(1)
+	public void deleteBinaryTree() {
+		root = null;
+		System.out.println("Binary Tree Deleted Successfully");
+	}
