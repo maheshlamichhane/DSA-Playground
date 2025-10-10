@@ -178,7 +178,7 @@ LevelOrder Traversal:-> first level -> second level
 //Level Order O(N) for both
 	void levelOrder() {
 		Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
-		queue.add(root);
+		queue.add( );
 		while(!queue.isEmpty()) {
 			BinaryNode presentNode = queue.remove();
 			System.out.print(presentNode.value+" ");
@@ -191,6 +191,8 @@ LevelOrder Traversal:-> first level -> second level
 		}
 
 	}
+
+
 
 
 Search In Binary Tree:->
