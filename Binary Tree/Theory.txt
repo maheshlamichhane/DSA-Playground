@@ -63,10 +63,10 @@ public class TreeNode {
 }
 
 
-Main:->
+TreeNodeMain:->
 package com.lamichhane.tree.basictreee;
 
-public class Main {
+public class TreeNodeMain {
 
 	public static void main(String[] args) {
 
@@ -293,7 +293,7 @@ Insert In Binary Tree:->
 				presentNode.left = null;
 				return;
 			}
-				queue.add(presentNode.left);
+				queue.add( presentNode.left);
 				queue.add(presentNode.right);
 		}
 	}
