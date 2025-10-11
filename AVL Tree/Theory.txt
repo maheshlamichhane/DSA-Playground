@@ -1,0 +1,46 @@
+What is an AVL Tree?
+-> An AVL tree is a self-balancing Binary Search Tree(BST) where the
+difference between height of left and right sub trees cannot be more than
+one for all nodes.
+-> If at any time heights of left and right sub trees differe by more than
+one, then  rebalancing is done to restore AVL property, this process is called
+rotation.
+
+Why do we need AVL Tree?
+-> in case of inserting 10,20,30,40,50,60 node in BST then it will inserted
+on the right side only because we start inserting from the minimum values so
+all data are stored in the right side of node which increases the depth of
+the tree which increases the time complexity for searching the node that's
+why we need AVL tree.
+Search for 60
+time complexity is O(N) for BST
+
+In AVL Tree for search 60
+time complexity is O(LogN)
+
+Common Operations on AVL Tree?
+i. Creation of AVL trees
+ii. Search for a node in AVL Tree
+iii. Traverse all nodes in AVL Tree
+iv. Insert a node in AVL Tree
+v. Delete a node from AVL Tree
+vi. Delete the entire AVL tree
+
+AVL Tree Insert a Node:->
+i. Rotation is not required
+ii. Rotation is required
+    * Left Left Condition(LL) -> right rotation
+	* Left Right Condition(LR) -> left right rotation
+	* Right Right Condition(RR) -> left rotation
+	* Right Left Condition(RL) -> right left rotation
+
+AVL Tree Delete a Node:->
+i. Rotation is not required
+	* the node to be deleted is leaf node
+	* the node to be deleted has a child node
+	* the node to be deleted has a two child node
+ii. Rotation is required
+	* Left Left Condition(LL) -> right rotation
+	* Left Right Condition(LR) -> left right rotation
+	* Right Right Condition(RR) -> left rotation
+	* Right Left Condition(RL) -> right left roatation
