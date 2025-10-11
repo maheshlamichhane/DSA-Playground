@@ -11,5 +11,12 @@ public class AVLTreeMain {
         avlTree.insert(80);
         System.out.println(avlTree.root);
         avlTree.levelOrder(avlTree.root);
+        System.out.println();
+        avlTree.delete(80);
+        avlTree.levelOrder(avlTree.root);
+        System.out.println();
+        avlTree.delete(60);
+        avlTree.levelOrder(avlTree.root);
+
     }
 }

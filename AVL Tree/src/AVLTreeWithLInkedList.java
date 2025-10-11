@@ -164,10 +164,101 @@ public class AVLTreeWithLInkedList {
         }
 
         return node;
+
+        // Time Complexity O(logn),Space Complexity O(logn)
     }
 
     public BinaryTreeNode insert(int value){
        root =  insert(root, value);
        return root;
     }
+
+
+    //minimum node
+    public static BinaryTreeNode minimumNode(BinaryTreeNode root){
+        if(root.left == null){
+            return root;
+        }
+        else{
+            return minimumNode(root.left);
+        }
+    }
+
+
+    public BinaryTreeNode delete(BinaryTreeNode node,int value){
+        if(node == null){
+            System.out.println("Value not found");
+            return node;
+        }
+        if(value < node.value){
+            node.left = delete(node.left, value);
+        }else if(value > node.value){
+            node.right = delete(node.right, value);
+        }
+        else{
+            if(node.left != null && node.right != null){
+                BinaryTreeNode minNodeForRight = minimumNode(node.right);
+                node.value = minNodeForRight.value;
+                node.right = delete(node.right,minNodeForRight.value);
+            }
+            else if(node.left != null){
+                node = node.left;
+            }
+            else if(node.right != null){
+                node = node.right;
+            }
+            else{
+                node = null;
+            }
+        }
+
+        int balance = getBalance(node);
+        // LL
+        if(balance > 1 && getBalance(node.left) >= 0){
+            return rotateRight(node);
+        }
+
+        //LR
+        if(balance > 1 && getBalance(node.left) < 0){
+            node.left = rotateLeft(node.left);
+            return rotateRight(node);
+        }
+        //RR
+        if(balance < -1 && getBalance(node.right) <= 0){
+            return rotateLeft(node);
+        }
+
+        // RL
+        if(balance < -1 && getBalance(node.right) > 0){
+            node.right = rotateRight(node.right);
+            return rotateLeft(node);
+        }
+
+        return node;
+
+        // Time Compexity O(logn),Space Complexity O(logn)
+    }
+
+    public void delete(int value){
+        root = delete(root,value);
+    }
+
+
+    public void deleteBinarySearchTree(){
+        root = null;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
