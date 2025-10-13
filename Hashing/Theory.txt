@@ -1,0 +1,113 @@
+What is Hashing?
+-> Hashing is a method of sorting and indexing data. The idea behind is to allow large
+amounts of data to be indexed using keys commonly created by formulas.
+
+Apple -> magic function -> 18
+Application -> magic function -> 20
+Appmillers -> magic function -> 22
+
+note:-> here numbers can represents the index of the array.
+
+Why Hashing?
+-> it is time efficient in case of search operations.
+
+Data Structure 			Time complexity for search
+Array				O(logN)
+Linked List			O(N)
+Tree				O(logN)
+Hashing				O(1)/O(N)
+
+
+
+Hashing Terminology:
+
+Hash Function : it is a function that can be used to map of arbitrary size to data
+of fixed size.
+Key: Input data by user such as apple,application.
+Hash value: A value that is returned by hash function such as 18,20.
+Hash Table: it is a data structure which implements an associative array abstract data
+type, a structure that can map keys to values.
+Collision: A collision occures when two different keys to a hash function produce the
+same output.
+
+
+Hash Functions:
+
+Mod Function
+int mod(int number,int cellNumber){
+return number % cellNumber;
+}
+mod(400,24) -> 16
+mod(700,24) -> 4
+
+this means
+arr[4] = 700
+arr[16] = 400
+
+ASCII function:
+public int modASCII(String word,int cellNumber){
+ int total = 0;
+for(int i=0; i<word.length(); i++){
+ total+= word.charAt(i);
+ System.out.println(total);
+}
+return total % cellNumber;
+}
+
+modASCII("ABC",24) -> 6
+A-> 65,
+B-> 66,
+C-> 67
+
+we can write
+arr[6] = "ABC";
+
+Properties of good hash function:->
+-> it distribute hash values uniformly across hash tables.
+-> it has to use all the input data.
+
+
+Collision Resolution Technique:->
+
+i. Direct Chaining
+ii. Open Addressing
+	1. Linear Probing
+	2. Quadratic Probing
+	3. Double Hashing
+
+
+
+Direct Chaining: implements the buckets as linked list. coliding elements
+are stored in this lists.
+ABCD -> hash function -> 2
+EFGH -> has function -> 2
+IJKLM -> hash function -> 3
+
+arr[2] = [ABCD,EFGH]
+arr[3] = [IJKLM]
+
+
+Open Addressing: Coliding elements are stored in other vacant buckets.During storage
+and lookup these are found through so called probing.
+
+Linear probing: It places new key into closes following empty cell.
+
+Quadratic probing: Adding arbitrary quadratic polynomial to the index until
+an empty cell is found.
+
+Double Hashing: Interval between probes is computed by another hash function.
+
+Pros and Cons of Collision resolution techniques:
+
+Direct Chaining
+-> Hash table never gets full
+-> Huge Linked List causes performance leaks(Time complexity for search operation becomes O(n).)
+
+Open Addressing:->
+-> Easy Implementation
+-> When Hash Table is full, creation of new Hash table affects performance(
+Time complexity for search operation becomes O(n).)
+
+Note:
+-> If the input size is known we always use "Open addressing"
+-> If we perform deletion operation frequently we use direct chaining.

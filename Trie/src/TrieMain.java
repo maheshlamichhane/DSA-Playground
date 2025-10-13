@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 public class TrieMain {
     public static void main(String[] args) {
