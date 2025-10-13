@@ -1,0 +1,37 @@
+What is a Trie?
+-> A Trie is a tree-based data structure that organizes infomration in a hierarchy.
+
+Properties:
+-> it is typically used to store or search strings in a space and time efficient way.
+-> Any node in trie can store non repetitive multiple characters.
+-> Every node stores link of the next character of the string
+-> Every node keeps track of 'end of string'.
+
+Why we need Trie?
+-> To solve many standard problems in efficient way
+i. Spelling checker
+ii. Auto completion
+
+Common Operations on Trie
+i. Creation of Trie
+ii. Insertion in Trie
+iii. Search for a String in trie
+iv. Deletion from Trie
+
+
+Insert a String in a Trie
+case 1: A Trie is Blank
+case 2: New string's prefix is common to another strings prefix
+case 3: New string's prefix is already present as complete string
+
+Search for a String in a Trie:
+case 1: String does not exist in Trie
+case 2: String exists in Trie
+case 3: String is a prefix of another string, but it does not exis in a trie
+
+
+Delete a String from Trie:->
+case 1: Some other prefix of string is same as the one that we want to delete.(API,APPLE)
+case 2: The string is a prefix of another string. (API,APIS)
+case 3: Other stirng is a prefix of this string. (APIS,AP)
+case 4: Not any node depends on this string(K)
