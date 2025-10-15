@@ -1,0 +1,177 @@
+What is Sorting?
+-> By definition sorting refers to arranging data in a particular format:
+either ascending or descending.
+-> Practical example Microsoft Excel: Build in functionality to sort data and
+Online store product.
+
+Types Of Sorting?
+Sorting
+	Space Used
+		In place:-> Sorting algorithms which does not requiry any extra space for
+					sorting. ex: bubble sort
+		Out of place:-> Sorting algorithms which requires an extra space for
+						sorting. ex: Merge sort
+	Stability
+		Stable:-> If a sorting algorithms after sorting the contents does not
+				  change the sequence of simillar content in which they appear
+				  then this sorting is called stable sorting.ex: Insertion sort
+		Unstable:-> If a sorting algorithm after sorting the content changes the
+					sequence of simillar content in which they appear, then
+					it is called unstable sort.ex: Quick sort
+
+Sorting Terminology
+Increasing Order
+-> If successive element is greater then the previous one
+-> Example: 1,3,5,7,9,11
+
+Decreasing Order
+-> If successive element is less than the previous one
+-> Example: 11,9,7,5,3,1
+
+Non Increasing Order
+-> If successive element is less than or equal to its previous element in the
+sequence.
+-> Example: 11,9,7,5,5,3,1
+
+Non Decreasing Order
+-> If successive element is greater than or equal to its previous element
+in the sequence.
+-> Example: 1,3,5,7,7,9,11
+
+Sorting Algorithms:
+
+i. Bubble sort
+ii. Selection sort
+iii. Insertion sort
+iv. Bucket sort
+v. Merge sort
+vi. Quick sort
+vii. Heap sort
+
+Which one to select?
+-> Stability
+-> Space efficient
+-> Time efficient
+
+
+Bubble Sort
+-> Bubble sort is also referred as Sinking sort.
+-> We repeatedly compare each pair of adjacent items and swap then if they
+are in the wrong order.
+Time Complexity:-> O(N square)
+Space Complexity:-> O(1)
+
+When to use Bubble Sort?
+-> When the input is almost sorted
+-> Space is a concern
+-> Easy to implement
+
+When to avoid Bubble Sort?
+-> Average time complexity is poor.
+
+Selection Sort
+-> In case of selection sort we repeatedly find the minimum element and
+move it tot the sorted part of array to make unsorted part sorted.
+
+When to use Selection Sort?
+-> When we have insufficient memory
+-> Easy to implement
+
+When to avoid Selection Sort?
+-> When time is a concern.
+
+Time Complexity:-> O(n square)
+Space Complexity:-> O(1)
+
+Insertion Sort
+-> Divide the given array into two part
+-> Take first element from unsorted array and find its correct position in
+sorted array.
+-> Repeat until unsorted array is empty
+
+When to use Insertion Sort?
+-> When we have insufficient memory.
+-> Easy to implement
+-> When we have continuous inflow of numbers and we want to keep them sorted.
+
+When to avoid Insertion Sort?
+-> When time is a concern.
+
+Time Complexity: O(N square)
+Space Complexity: O(1)
+
+Bucket Sort
+-> Create buckets and distribute elements of array into buckets.
+-> Sort buckets individually
+-> Merge buckets after sorting
+
+Step1:->
+Number of buckets = round(Sqrt(number of elements))
+round(sqrt(9)) = 3
+
+Step2:->
+Appropriate bucket = ceil(value * number of buckets/maxValue);
+
+Step3:-> Sort all buckets(using any sorting algorithm)
+
+Step4:-> place sorted data of each object into final array which is does
+not need to be sorted right now.
+
+When to use Bucket Sort?
+-> When input uniformly distributed over range.
+1,2,4,5,3,8,7,9 -> accept
+1,2,4,9,93,95,88  -> reject
+
+When to avoid Bucket Sort?
+-> When space is a concern.
+
+
+Time Complexity: O(nlogn)
+Space Complexity:O(n)
+
+
+Merge Sort
+-> Merge sort is a divide and conquer algorithm.
+-> Divide the input array in two halves and we keep halving recurively until
+they become to small that cannot be broken furthur.
+-> Merge halves by sorting them.
+
+When to use Merge Sort?
+-> When you need stable sort
+-> When average expected time is O(NlogN)
+
+When to avoid Merge Sort?
+-> When space is concern.
+
+Time Complexity: O(NlogN)
+Space Complexity: O(N)
+
+Quick Sort
+-> Quick sort is a divide and conquer algorithm.
+-> Find pivot number and make sure smaller numbers located at the left of
+pivot and bigger numbers are located at the right of the pivot.
+-> Unlike merge sort extra space is not required.
+
+When to use Quick Sort?
+-> When average expected time is O(NlogN)
+
+
+When to avoid Quick Sort?
+-> When space is a concern.
+-> when you need stable sort.
+
+Time Complexity:-> O(nlogn)
+Space Complexity:-> O(n)
+
+
+Heap Sort
+-> Step1 : Insert data to binary heap tree.
+-> Step2 : Extract data from binary heap
+-> it is best suited with array, it does  not work with Linked List.
+
+-> Binary Heap is a binary tree with special properties
+-> The value of any given node must be less or equal of its children(min heap)
+-> The value of any given node must be greater or equal of its children(max heap)
+
+Time Complexity:-> O(NlogN)
+Space Complexity:-> O(1)
