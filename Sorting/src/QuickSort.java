@@ -28,4 +28,6 @@ public class QuickSort {
             System.out.print(i+" ");
         }
     }
+
+    // Time Complexity O(NlogN),Space Complexity O(N)
 }
