@@ -1,0 +1,44 @@
+What is a Graph?
+-> Graph consists of a finite set of vertices(or nodes) and a set of Edges
+which connect a pair of nodes.
+
+Graph Terminology
+
+Vertices:-> Vertices are the nodes of the graph.
+Edge:-> The edge is the line that connects pairs of vertices.
+Unweighted graph:-> A graph which does not have a weight associated with any edge.
+Weighted graph:-> A graph which has a weight associated with any edge.
+Undirectional graph:-> In case the edges of the graph do not have a direction
+associated with them.
+Directed graph:-> If the edges in a graph have a direction associated with them.
+Cyclic graph:-> A graph which has at least one loop.
+Acyclic graph:-> A graph with no loop
+Tree:-> It is a special case of directed acyclic graphs.
+
+Graph Types:->
+
+Graph
+	Directed
+		Weighted
+			Positive
+			Negative
+		Unweighted
+	Undirected
+		Weighted
+			Positive
+			Negative
+		Unweighted
+
+
+Graph Representation
+Adjacency Matrix: an adjacency matrix is a square matrix or you can say it is
+a 2D array. and the elements of the matrix indicate whether pairs of vertices
+are adjacent or not in the graph.
+
+Adjancy List:-> An adjanceny list is a collection of unordered list used to
+represent a graph. Each list describes the set of neighbors of a vertex in the
+graph.
+
+Note:->
+-> If a graph is complete or almost complete we should use adjancency matrix.
+-> If the number of edges are few then we should use adjancency list.
