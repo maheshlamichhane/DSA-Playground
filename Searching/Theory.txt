@@ -1,0 +1,17 @@
+Searching Algorithms:
+-> Linear Search
+-> Binary Search
+
+Linear Search :-> search element from the first position to last
+-> it is suitable for unsorted array not for sorted.
+Time Complexity:-> O(N)
+Space Complexity:-> O(1)
+
+Binary Search
+-> Binary Search is faster than Linear Search.
+-> Half of the remaining elements can be eliminated at a time,instead of
+eliminating them one by one.
+-> Binary Search only works for sorted arrays.
+
+Worst and average time complexity:-> O(logN)
+best time complexity: O(1)
