@@ -1,13 +1,12 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Graph {
+public class GraphWithArray {
 
-    ArrayList<GraphNode> nodes;
+    ArrayList<GraphNodeWithArray> nodes;
     int[][] adjacencyMatrix;
 
 
-    public Graph(ArrayList<GraphNode> nodes) {
+    public GraphWithArray(ArrayList<GraphNodeWithArray> nodes) {
         this.nodes = nodes;
         adjacencyMatrix = new int[nodes.size()][nodes.size()];
     }

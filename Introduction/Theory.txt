@@ -23,7 +23,7 @@ ii. Non Primitive
             III. Queue
     b. Non Linear
         1. Tree
-        2. Graph
+        2. GraphWithArray
 
 Types of Algorithms
 i. Simple recursive algorithms
