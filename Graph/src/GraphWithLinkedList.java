@@ -35,16 +35,34 @@ public class GraphWithLinkedList {
     }
 
 
+    public void bfsVisit(GraphNodeWithLinkedList node){
+        LinkedList<GraphNodeWithLinkedList> queue = new LinkedList<>();
+        queue.add(node);
+        while(!queue.isEmpty()){
+            GraphNodeWithLinkedList currentNode = queue.remove();
+            currentNode.isVisited = true;
+            System.out.println(currentNode.name);
+            for(GraphNodeWithLinkedList neighbor : currentNode.neighbors){
+                if(!neighbor.isVisited){
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+
+        }
 
 
+    }
 
+    public  void bfs(){
+        for(GraphNodeWithLinkedList nodee : nodeList){
+            if(!nodee.isVisited){
+                bfsVisit(nodee);
+            }
+        }
+    }
 
-
-
-
-
-
-
+    // Time Complexity For Breadth First Traversal O(V+E),Space Complexity O(V+E)
 
 
 }
