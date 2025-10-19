@@ -97,5 +97,35 @@ public class GraphWithArray {
     }
     // Time Complexity For Breadth First Traversal O(V+E),Space Complexity O(V+E)
 
+    // topological sort
+    public void addDirectedEdge(int i,int j){
+        adjacencyMatrix[i][j] = 1;
+    }
+
+    void topologicalVisit(GraphNodeWithArray node,Stack<GraphNodeWithArray> stack){
+        ArrayList<GraphNodeWithArray> neighbors = getNeighbors(node);
+        for(GraphNodeWithArray neighbor : neighbors){
+            if(!neighbor.isVisited){
+                topologicalVisit(neighbor,stack);
+            }
+        }
+        node.isVisited = true;
+        stack.push(node);
+    }
+
+    void topologicalSort(){
+        Stack<GraphNodeWithArray> stack = new Stack<>();
+        for(GraphNodeWithArray node: nodes){
+            if(!node.isVisited){
+                topologicalVisit(node,stack);
+            }
+        }
+
+        while(!stack.isEmpty()){
+            System.out.print(stack.pop().value+" ");
+        }
+
+        // Time Compleixty O(V+E),Space Complexity O(V+E)
+    }
 
 }

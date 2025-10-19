@@ -93,4 +93,47 @@ public class GraphWithLinkedList {
         }
     }
 
+    // Topological Sort
+    public void addDirectedEdge(int i,int j){
+        GraphNodeWithLinkedList first = nodeList.get(i);
+        GraphNodeWithLinkedList second = nodeList.get(j);
+        first.neighbors.add(second);
+    }
+
+    public void topologicalVisit(GraphNodeWithLinkedList node,Stack<GraphNodeWithLinkedList> stack){
+        for(GraphNodeWithLinkedList neighbor : node.neighbors){
+            if(!neighbor.isVisited){
+                topologicalVisit(neighbor,stack);
+            }
+        }
+        node.isVisited = true;
+        stack.push(node);
+    }
+
+    public void topologicalSort(){
+        Stack<GraphNodeWithLinkedList> stack = new Stack<>();
+        for(GraphNodeWithLinkedList node: nodeList){
+            if(!node.isVisited){
+                topologicalVisit(node,stack);
+            }
+        }
+        while (!stack.isEmpty()){
+            System.out.println(stack.pop().name);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
