@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class GraphWithArray {
 
@@ -64,6 +65,33 @@ public class GraphWithArray {
         for(GraphNodeWithArray node: nodes){
             if(!node.isVisited){
                 bfsVisit(node);
+            }
+        }
+    }
+    // Time Complexity For Breadth First Traversal O(V+E),Space Complexity O(V+E)
+
+
+    public void dfsVisit(GraphNodeWithArray node){
+        Stack<GraphNodeWithArray> stack = new Stack<>();
+        node.isVisited = true;
+        stack.push(node);
+        while(!stack.isEmpty()){
+            GraphNodeWithArray curentNode = stack.pop();
+            System.out.print(curentNode.value+" ");
+            ArrayList<GraphNodeWithArray> neighbors = getNeighbors(curentNode);
+            for(GraphNodeWithArray neighbor : neighbors){
+                if(!neighbor.isVisited){
+                    neighbor.isVisited = true;
+                    stack.push(neighbor);
+                }
+            }
+        }
+    }
+
+    public void dfs(){
+        for(GraphNodeWithArray node: nodes){
+            if(!node.isVisited){
+                dfsVisit(node);
             }
         }
     }

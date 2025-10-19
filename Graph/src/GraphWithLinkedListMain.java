@@ -18,7 +18,10 @@ public class GraphWithLinkedListMain {
         graphWithLinkedList.addUndirectedEdge(2,3);
         graphWithLinkedList.addUndirectedEdge(3,4);
 
-        graphWithLinkedList.printGraph();
-        graphWithLinkedList.bfs();
+//        graphWithLinkedList.printGraph();
+//        graphWithLinkedList.bfs();
+
+        graphWithLinkedList.dfs();
+
     }
 }

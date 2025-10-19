@@ -18,8 +18,9 @@ public class GraphWithArrayMain {
         graphWithArray.addUndirectedEdge(2,3);
         graphWithArray.addUndirectedEdge(3,4);
 
-        graphWithArray.printGraph();
-        graphWithArray.bfs();
+//        graphWithArray.printGraph();
+//        graphWithArray.bfs();
+        graphWithArray.dfs();
 
 
     }
