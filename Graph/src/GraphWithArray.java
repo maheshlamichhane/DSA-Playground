@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class GraphWithArray {
 
@@ -28,6 +29,42 @@ public class GraphWithArray {
                 System.out.print(k + " ");
             }
             System.out.println();
+        }
+    }
+
+    public ArrayList<GraphNodeWithArray> getNeighbors(GraphNodeWithArray node) {
+        ArrayList<GraphNodeWithArray> neighbors = new ArrayList<>();
+        int nodeIndex = node.index;
+        for(int i=0; i<adjacencyMatrix.length;i++){
+            if(adjacencyMatrix[nodeIndex][i] == 1){
+                neighbors.add(nodes.get(i));
+            }
+        }
+        return neighbors;
+    }
+
+    public void bfsVisit(GraphNodeWithArray node){
+        LinkedList<GraphNodeWithArray> queue = new LinkedList<>();
+        node.isVisited = true;
+        queue.add(node);
+        while(!queue.isEmpty()){
+            GraphNodeWithArray curentNode = queue.remove();
+            System.out.println(curentNode.value);
+            ArrayList<GraphNodeWithArray> neighbors = getNeighbors(curentNode);
+            for(GraphNodeWithArray neighbor : neighbors){
+                if(!neighbor.isVisited){
+                    neighbor.isVisited = true;
+                    queue.add(neighbor);
+                }
+            }
+        }
+    }
+
+    public void bfs(){
+        for(GraphNodeWithArray node: nodes){
+            if(!node.isVisited){
+                bfsVisit(node);
+            }
         }
     }
 

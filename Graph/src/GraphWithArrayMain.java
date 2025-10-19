@@ -19,6 +19,7 @@ public class GraphWithArrayMain {
         graphWithArray.addUndirectedEdge(3,4);
 
         graphWithArray.printGraph();
+        graphWithArray.bfs();
 
 
     }
