@@ -51,8 +51,6 @@ public class GraphWithLinkedList {
             }
 
         }
-
-
     }
 
     public  void bfs(){
@@ -81,8 +79,6 @@ public class GraphWithLinkedList {
             }
 
         }
-
-
     }
 
     public  void dfs(){
@@ -123,17 +119,34 @@ public class GraphWithLinkedList {
     }
 
 
+    // shortest path using the BFS
+    public void BFSForSSSPP(GraphNodeWithLinkedList node){
+        LinkedList<GraphNodeWithLinkedList> queue = new LinkedList<>();
+        queue.add(node);
+        while(!queue.isEmpty()){
+            GraphNodeWithLinkedList currentNode = queue.remove();
+            currentNode.isVisited = true;
+            System.out.print("Printing path for node "+currentNode.name+": ");
+            pathPrint(currentNode);
+            System.out.println();
+            for(GraphNodeWithLinkedList neighbor : currentNode.neighbors){
+                if(!neighbor.isVisited){
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                    neighbor.parent = currentNode;
+                }
+            }
 
+        }
 
+        // Time Complexity O(V+E),Space Complexity O(V+E)
+    }
 
-
-
-
-
-
-
-
-
-
+    public static void pathPrint(GraphNodeWithLinkedList node){
+        if(node.parent != null){
+            pathPrint(node.parent);
+        }
+        System.out.print(node.name+" ");
+    }
 
 }

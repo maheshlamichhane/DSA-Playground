@@ -128,4 +128,34 @@ public class GraphWithArray {
         // Time Compleixty O(V+E),Space Complexity O(V+E)
     }
 
+
+    // shortest path using the BFS
+    public void BFSForSSSPP(GraphNodeWithArray node){
+        LinkedList<GraphNodeWithArray> queue = new LinkedList<>();
+        node.isVisited = true;
+        queue.add(node);
+        while(!queue.isEmpty()){
+            GraphNodeWithArray curentNode = queue.remove();
+            System.out.print("Printing path for node "+curentNode.value+": ");
+            pathPrint(curentNode);
+            System.out.println();
+            ArrayList<GraphNodeWithArray> neighbors = getNeighbors(curentNode);
+            for(GraphNodeWithArray neighbor : neighbors){
+                if(!neighbor.isVisited){
+                    neighbor.isVisited = true;
+                    neighbor.parent = curentNode;
+                    queue.add(neighbor);
+                }
+            }
+        }
+        // Time Complexity O(V+E),Space Complexity O(V+E)
+    }
+
+    public static void pathPrint(GraphNodeWithArray node){
+        if(node.parent != null){
+            pathPrint(node.parent);
+        }
+        System.out.print(node.value+" ");
+    }
+
 }
