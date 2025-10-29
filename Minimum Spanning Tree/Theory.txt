@@ -1,0 +1,13 @@
+Minimum Spanning Tree:
+-> A minimum spanning tree is a subset of the edges of connected,weighted and undirected graph which:
+* connects all vertices together
+* No cycle
+* minimum total edge
+
+
+Disjoint Set:
+-> It is a data structure that keeps track of set of elements which are partitioned into a number of
+disjoint and non overlapping sets and each sets have representative which helps in identifying that
+sets.
+-> makeSet(N): used to create initial set
+union(x,y): merge two given sets
